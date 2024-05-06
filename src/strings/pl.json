@@ -367,7 +367,7 @@
     "HeaderSeriesOptions": "Opcje nagrywania serialu",
     "HeaderSeriesStatus": "Stan serialu",
     "HeaderServerSettings": "Ustawienia serwera",
-    "HeaderSetupLibrary": "Skonfiguruj swoje biblioteki mediów",
+    "HeaderSetupLibrary": "Skonfiguruj biblioteki mediów",
     "HeaderSortBy": "Sortuj według",
     "HeaderSortOrder": "Porządek sortowania",
     "HeaderSpecialEpisodeInfo": "Specjalne informacje o odcinku",
@@ -1867,5 +1867,11 @@
     "ErrorDeletingLyrics": "Wystąpił błąd podczas usuwania słów z serwera. Sprawdź, czy Jellyfin ma uprawnienia do zapisu w folderze multimediów i spróbuj ponownie.",
     "HeaderDeleteLyrics": "Usuń słowa",
     "Lyrics": "Słowa",
-    "ViewLyrics": "Zobacz słowa"
+    "ViewLyrics": "Zobacz słowa",
+    "SavePassword": "Zapisz hasło",
+    "EnableDts": "Włącz DTS (DCA)",
+    "EnableDtsHelp": "Włącz tylko wtedy, gdy urządzenie obsługuje DTS lub jest podłączone do kompatybilnego odbiornika audio, w przeciwnym razie może to spowodować błąd odtwarzania.",
+    "EnableTrueHd": "Włącz TrueHD",
+    "EnableTrueHdHelp": "Włącz tylko wtedy, gdy urządzenie obsługuje TrueHD lub jest podłączone do kompatybilnego odbiornika audio, w przeciwnym razie może to spowodować błąd odtwarzania.",
+    "HeaderVideoAdvanced": "Zaawansowane wideo"
 }

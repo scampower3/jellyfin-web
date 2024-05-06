@@ -1858,7 +1858,7 @@
     "PlaybackError.MEDIA_NOT_SUPPORTED": "La lecture a échoué car le média n'est pas pris en charge par ce client.",
     "PlaybackError.NETWORK_ERROR": "La lecture a échoué à cause d'une erreur réseau.",
     "PlaybackError.NO_MEDIA_ERROR": "Impossible de trouver une source multimédia valide à lire.",
-    "PlaybackError.PLAYER_ERROR": "La lecture a échoué en raison d'une erreur fatale du joueur.",
+    "PlaybackError.PLAYER_ERROR": "La lecture a échoué en raison d'une erreur fatale du lecteur.",
     "LabelTrickplayAccelEncoding": "Activer l'encodage MJPEG accéléré par le matériel",
     "LabelTrickplayAccelEncodingHelp": "Actuellement disponible uniquement sur QSV et VAAPI, cette option n'a aucun effet sur les autres méthodes d'accélération matérielle.",
     "ErrorDeletingLyrics": "Une erreur est survenu lors de la suppression des paroles du serveur. S'il vous plaît verifier que Jellyfin peut modifier les fichier dans le dossier multimedia et réessayez.",
@@ -1867,5 +1867,10 @@
     "DeleteLyrics": "Supprimez ces paroles",
     "HeaderNoLyrics": "Aucune paroles n'ont êtes trouves",
     "Lyrics": "Paroles",
-    "ViewLyrics": "Voir les paroles"
+    "ViewLyrics": "Voir les paroles",
+    "SavePassword": "Sauvegarder le mot de passe",
+    "EnableDts": "Activer DTS (DCA)",
+    "EnableDtsHelp": "N'activez cette option que si votre appareil prend en charge le DTS ou s'il est connecté à un lecteur audio compatible, sinon la lecture risque d'échouer.",
+    "EnableTrueHdHelp": "N'activez cette option que si votre appareil prend en charge la norme TrueHD ou s'il est connecté à un lecteur audio compatible, sinon la lecture risque d'échouer.",
+    "EnableTrueHd": "Activer le TrueHD"
 }
