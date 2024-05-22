@@ -5,7 +5,9 @@ import { appRouter } from '../components/router/appRouter';
 import layoutManager from 'components/layoutManager';
 import { playbackManager } from '../components/playback/playbackmanager';
 import ServerConnections from '../components/ServerConnections';
+import scrollManager from 'components/scrollManager';
 
+import keyboardNavigation from 'scripts/keyboardNavigation';
 import globalize from '../scripts/globalize';
 import LibraryMenu from '../scripts/libraryMenu';
 import Events from '../utils/events.ts';
@@ -71,7 +73,7 @@ export default function (view) {
             lyric.classList.remove('pastLyric');
             lyric.classList.remove('futureLyric');
             if (autoScroll) {
-                lyric.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                scrollManager.scrollToElement(lyric, true);
             }
         }
     }
@@ -239,14 +241,22 @@ export default function (view) {
         }
     }
 
+    function onWheel() {
+        autoScroll = false;
+    }
+
+    function onKeyDown(e) {
+        const key = keyboardNavigation.getKeyName(e);
+        if (key === 'ArrowUp' || key === 'ArrowDown') {
+            autoScroll = false;
+        }
+    }
+
     view.addEventListener('viewshow', function () {
         Events.on(playbackManager, 'playerchange', onPlayerChange);
-        document.addEventListener('wheel', () => (autoScroll = false));
-        document.addEventListener('keydown', (e) => {
-            if (e.keyCode == 38 || e.keyCode == 40) {
-                autoScroll = false;
-            }
-        });
+        autoScroll = true;
+        document.addEventListener('wheel', onWheel);
+        document.addEventListener('keydown', onKeyDown);
         try {
             onLoad();
         } catch (e) {
@@ -256,12 +266,8 @@ export default function (view) {
 
     view.addEventListener('viewbeforehide', function () {
         Events.off(playbackManager, 'playerchange', onPlayerChange);
-        document.removeEventListener('wheel', () => (autoScroll = false));
-        document.removeEventListener('keydown', (e) => {
-            if (e.keyCode == 38 || e.keyCode == 40) {
-                autoScroll = false;
-            }
-        });
+        document.removeEventListener('wheel', onWheel);
+        document.removeEventListener('keydown', onKeyDown);
         releaseCurrentPlayer();
     });
 }
