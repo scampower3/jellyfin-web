@@ -17,6 +17,7 @@ let currentItem;
 
 let savedLyrics;
 let isDynamicLyric = false;
+let autoScroll = true;
 
 function dynamicLyricHtmlReducer(htmlAccumulator, lyric, index) {
     if (layoutManager.tv) {
@@ -69,6 +70,9 @@ export default function (view) {
         if (lyric) {
             lyric.classList.remove('pastLyric');
             lyric.classList.remove('futureLyric');
+            if (autoScroll) {
+                lyric.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
     }
 
@@ -178,6 +182,7 @@ export default function (view) {
     }
 
     function onLyricClick(lyricTime) {
+        autoScroll = true;
         playbackManager.seek(lyricTime);
         if (playbackManager.paused()) {
             playbackManager.playPause(currentPlayer);
@@ -236,6 +241,12 @@ export default function (view) {
 
     view.addEventListener('viewshow', function () {
         Events.on(playbackManager, 'playerchange', onPlayerChange);
+        document.addEventListener('wheel', () => (autoScroll = false));
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode == 38 || e.keyCode == 40) {
+                autoScroll = false;
+            }
+        });
         try {
             onLoad();
         } catch (e) {
@@ -245,6 +256,12 @@ export default function (view) {
 
     view.addEventListener('viewbeforehide', function () {
         Events.off(playbackManager, 'playerchange', onPlayerChange);
+        document.removeEventListener('wheel', () => (autoScroll = false));
+        document.removeEventListener('keydown', (e) => {
+            if (e.keyCode == 38 || e.keyCode == 40) {
+                autoScroll = false;
+            }
+        });
         releaseCurrentPlayer();
     });
 }
